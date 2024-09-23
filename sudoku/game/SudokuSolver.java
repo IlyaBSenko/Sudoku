@@ -1,3 +1,5 @@
+package sudoku.game;
+
 import java.util.Random;
 
 public class SudokuSolver {

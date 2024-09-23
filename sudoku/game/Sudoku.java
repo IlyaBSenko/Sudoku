@@ -1,3 +1,5 @@
+package sudoku.game;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -16,6 +18,10 @@ public class Sudoku {
 
     public void setNumber(int row, int column, int number) {
         this.board[row][column] = number;
+    }
+
+    public int getNumber(int row, int column) {
+        return this.board[row][column];
     }
 
     public void printBoard() {
