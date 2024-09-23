@@ -1,0 +1,4 @@
+9x9 default board 2d array of pos integers
+
+start out with 30 numbers already given
+
