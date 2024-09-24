@@ -13,7 +13,30 @@ public class Sudoku {
     }
 
     public boolean isNumberValid(int row, int column, int number) {
-        return false;
+        for (int col = 0; col < 9; col++) {
+            if (board[row][col] == number) {
+                return false;
+            }
+        }
+        
+        for (int r = 0; r < 9; r++) {
+            if (board[r][column] == number) {
+                return false;
+            }
+        }
+
+        // sub grid checker
+        int subGridRowStart = (row / 3) * 3;
+        int subGridColumnStart = (column / 3) * 3;
+        for (int r = subGridRowStart; r < subGridRowStart + 3; r++) {
+            for (int col = subGridColumnStart; col < subGridColumnStart + 3; col++) {
+                if (board[r][col] == number) {
+                    return false;
+                }
+            }
+        }
+        return true;
+
     }
 
     public void setNumber(int row, int column, int number) {
@@ -56,5 +79,5 @@ public class Sudoku {
             e.printStackTrace();
         }
         return board;
-    }
+    } 
 }
