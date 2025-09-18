@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 
 public class SudokuFrame extends JFrame {
     public final static int SIZE = 450;
+    
     public SudokuFrame() {
         super("Sudoku");
         setPreferredSize(new Dimension(SudokuFrame.SIZE, SudokuFrame.SIZE));
