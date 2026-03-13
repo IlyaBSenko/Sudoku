@@ -14,29 +14,28 @@ public class Sudoku {
 
     public boolean isNumberValid(int row, int column, int number) {
         for (int col = 0; col < 9; col++) {
-            if (board[row][col] == number) {
-                return false;
-            }
-        }
-        
-        for (int r = 0; r < 9; r++) {
-            if (board[r][column] == number) {
+            if (col != column && board[row][col] == number) { // skips the current cell
                 return false;
             }
         }
 
-        // sub grid checker
+        for (int r = 0; r < 9; r++) {
+            if (r != row && board[r][column] == number) {
+                return false;
+            }
+        }
+
         int subGridRowStart = (row / 3) * 3;
         int subGridColumnStart = (column / 3) * 3;
         for (int r = subGridRowStart; r < subGridRowStart + 3; r++) {
             for (int col = subGridColumnStart; col < subGridColumnStart + 3; col++) {
-                if (board[r][col] == number) {
+                if ((r != row || col != column) && board[r][col] == number) {
                     return false;
                 }
             }
         }
-        return true;
 
+        return true;
     }
 
     public void setNumber(int row, int column, int number) {
@@ -50,7 +49,7 @@ public class Sudoku {
     public void printBoard() {
         for (int[] row : this.board) {
             for (int column : row) {
-                System.out.print(String.valueOf(column) + ' ');
+                System.out.print(String.valueOf(column) + " ");
             }
             System.out.print('\n');
         }

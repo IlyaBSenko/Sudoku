@@ -1,11 +1,10 @@
 package sudoku.ui;
 
-import sudoku.game.Sudoku;
-
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.*;
+import sudoku.game.Sudoku;
 
 public class SudokuPanel extends JPanel {
 
@@ -35,7 +34,7 @@ public class SudokuPanel extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-        super.paintComponents(g);
+        super.paintComponent(g);
         drawGrid(g);
         drawNumbers(g);
     }
@@ -44,8 +43,9 @@ public class SudokuPanel extends JPanel {
         int cellWidth = SudokuFrame.SIZE / 9;
 
         g.setColor(Color.BLACK);
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i <= 9; i++) { 
             g.drawLine(i * cellWidth, 0, i * cellWidth, SudokuFrame.SIZE);
+            g.drawLine(0, i * cellWidth, SudokuFrame.SIZE, i * cellWidth);
         }
 
         for (int j = 0; j < 9; j++) {
@@ -62,7 +62,9 @@ public class SudokuPanel extends JPanel {
                 int x = j * cellWidth + centerOffset;
                 int y = i * cellWidth + centerOffset;
                 int number = this.sudoku.getNumber(i, j);
-                g.drawString(Integer.toString(number), x, y);
+                if (number != 0) { // dont draw 0's
+                    g.drawString(Integer.toString(number), x, y);
+                }
             }
         }
     }

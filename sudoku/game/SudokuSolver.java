@@ -17,8 +17,8 @@ public class SudokuSolver {
         }
     
         Random random = new Random();
-        int row = random.nextInt(10);
-        int column = random.nextInt(10);
+        int row = random.nextInt(8);
+        int column = random.nextInt(8);
          
 
         return null;
